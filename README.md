@@ -107,16 +107,16 @@ YYYY-MM-DD HH:MM:SS PORT_SCAN ip=X ports_scanned=X duration=Xs
 ## 📸 Screenshots
 
 ### Dashboard Overview
-![Dashboard Overview] <img width="1913" height="892" alt="Screenshot 2026-05-12 203846" src="https://github.com/user-attachments/assets/8e094e6b-99e4-4158-9824-1a92244a8814" />
+<img width="1913" height="892" alt="Screenshot 2026-05-12 203846" src="https://github.com/user-attachments/assets/8e094e6b-99e4-4158-9824-1a92244a8814" />
 
 ### Alerts Feed
-![Alerts Feed] <img width="1917" height="882" alt="Screenshot 2026-05-12 204150" src="https://github.com/user-attachments/assets/b8ce141a-f108-49b8-b59d-4b390562e3ed" />
+<img width="1917" height="882" alt="Screenshot 2026-05-12 204150" src="https://github.com/user-attachments/assets/b8ce141a-f108-49b8-b59d-4b390562e3ed" />
 
 ### Top Threat IPs
-![Top Threat IPs] <img width="1919" height="878" alt="Screenshot 2026-05-12 204258" src="https://github.com/user-attachments/assets/72d43f2a-1d48-4611-b4d1-840222262453" />
+<img width="1919" height="878" alt="Screenshot 2026-05-12 204258" src="https://github.com/user-attachments/assets/72d43f2a-1d48-4611-b4d1-840222262453" />
 
 ### Alert Statistics
-![Alert Statistics]<img width="1919" height="882" alt="Screenshot 2026-05-12 204313" src="https://github.com/user-attachments/assets/9ea48c91-40d1-4ef0-bc7c-4889dc24deb4" />
+<img width="1919" height="882" alt="Screenshot 2026-05-12 204313" src="https://github.com/user-attachments/assets/9ea48c91-40d1-4ef0-bc7c-4889dc24deb4" />
 
 <img width="1919" height="879" alt="Screenshot 2026-05-12 204334" src="https://github.com/user-attachments/assets/0eb9bd02-9f4f-47b8-be80-1c98f60968fa" />
 
