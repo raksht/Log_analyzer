@@ -73,17 +73,6 @@ streamlit run dashboard.py
 
 ---
 
-## 🧠 Skills Demonstrated
-
-- Log parsing with regex
-- Threat detection pattern recognition
-- SOC analyst thinking (brute force, credential stuffing, lateral movement)
-- MITRE ATT&CK framework
-- Python for security (no external security libs required)
-- Data visualization for blue team workflows
-
----
-
 ## 📝 Log Format Supported
 
 ```
