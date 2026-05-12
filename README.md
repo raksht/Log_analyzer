@@ -115,6 +115,5 @@ YYYY-MM-DD HH:MM:SS PORT_SCAN ip=X ports_scanned=X duration=Xs
 
 ## 🚀 Live Demo
 Try the interactive dashboard here:  
-[Log Analyzer — Streamlit App]
-https://loganalyzer-kbikpftcy3zj8kpn4rbk6z.streamlit.app/
+[Log Analyzer — Streamlit App]https://loganalyzer-kbikpftcy3zj8kpn4rbk6z.streamlit.app/
 
