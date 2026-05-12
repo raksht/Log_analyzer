@@ -112,3 +112,9 @@ YYYY-MM-DD HH:MM:SS PORT_SCAN ip=X ports_scanned=X duration=Xs
 <img width="1911" height="877" alt="Screenshot 2026-05-12 204351" src="https://github.com/user-attachments/assets/2be59a02-09dd-44bd-a50f-4470c34b823f" />
 
 <img width="1914" height="879" alt="Screenshot 2026-05-12 204456" src="https://github.com/user-attachments/assets/c44d2987-e8c7-44a3-b2cb-ef90a2b5bc18" />
+
+## 🚀 Live Demo
+Try the interactive dashboard here:  
+[Log Analyzer — Streamlit App]
+https://loganalyzer-kbikpftcy3zj8kpn4rbk6z.streamlit.app/
+
