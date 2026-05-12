@@ -3,7 +3,7 @@
 
 import os
 import sys
-log_path = "logs/sample_logs.txt"
+log_path = "log-analyzer/logs/sample_logs.txt"
 if not os.path.exists(log_path):
     st.warning("Sample log file not found. Please upload a log file.")
 import streamlit as st
