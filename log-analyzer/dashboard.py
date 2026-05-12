@@ -2,6 +2,9 @@
 # Run: streamlit run dashboard.py
 
 import os
+if not os.path.exists("logs/sample_logs.txt"):
+    st.warning("Sample log file not found. Please upload a log file.")
+
 import sys
 import streamlit as st
 import pandas as pd
