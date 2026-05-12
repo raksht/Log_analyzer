@@ -3,13 +3,12 @@
 
 import os
 import sys
-log_path = "log-analyzer/logs/sample_logs.txt"
-if not os.path.exists(log_path):
-    st.warning("Sample log file not found. Please upload a log file.")
 import streamlit as st
 import pandas as pd
 from datetime import datetime
 
+if not os.path.exists("logs/sample_logs.txt"):
+    st.warning("Sample log file not found. Please upload a log file.")
 # ── ensure local imports work ──────────────────────
 sys.path.insert(0, os.path.dirname(__file__))
 from analyzer import LogAnalyzer
