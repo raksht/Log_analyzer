@@ -2,7 +2,7 @@
 # Run: streamlit run dashboard.py
 
 import os
-if not os.path.exists("https://github.com/raksht/Log_analyzer/blob/main/log-analyzer/logs/sample_logs.txt"):
+if not os.path.exists("Log_analyzer/blob/main/log-analyzer/logs/sample_logs.txt"):
     st.warning("Sample log file not found. couldnt Please upload a log file.")
 
 import sys
