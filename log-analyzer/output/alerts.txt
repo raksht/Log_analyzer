@@ -1,0 +1,195 @@
+============================================================
+  SECURITY LOG ANALYZER — ALERT REPORT
+  Generated: 2026-05-12 20:36:26
+  Total Alerts: 18
+============================================================
+
+────────────────────────────────────────────────────────────
+[CRITICAL] POSSIBLE BREACH: 3 failures then success from 172.16.0.200 for user 'frank'
+  Timestamp : 2026-05-01 15:10:45
+  IP        : 172.16.0.200
+  User      : frank
+  Rule      : fail_then_succeed
+  MITRE     : T1078 — Valid Accounts — Possible Compromise
+  failures_before: 3
+  window_seconds: 120
+
+────────────────────────────────────────────────────────────
+[HIGH] Brute force attack detected from 203.0.113.45
+  Timestamp : 2026-05-01 10:01:05
+  IP        : 203.0.113.45
+  User      : admin
+  Rule      : brute_force
+  MITRE     : T1110.001 — Brute Force: Password Guessing
+  failed_count: 7
+  threshold : 3
+
+────────────────────────────────────────────────────────────
+[HIGH] Brute force attack detected from 198.51.100.77
+  Timestamp : 2026-05-01 10:15:00
+  IP        : 198.51.100.77
+  User      : admin
+  Rule      : brute_force
+  MITRE     : T1110.001 — Brute Force: Password Guessing
+  failed_count: 6
+  threshold : 3
+
+────────────────────────────────────────────────────────────
+[HIGH] File enumeration by 'alice' from 10.0.0.5: 3 sensitive files accessed
+  Timestamp : 2026-05-01 11:05:33
+  IP        : 10.0.0.5
+  User      : alice
+  Rule      : file_enum
+  MITRE     : T1083 — File and Directory Discovery
+  files_accessed: 3
+  files     : /etc/shadow | /etc/sudoers | /root/.ssh/id_rsa
+
+────────────────────────────────────────────────────────────
+[HIGH] Port scan detected from 185.220.101.33
+  Timestamp : 2026-05-01 11:30:00
+  IP        : 185.220.101.33
+  User      : N/A
+  Rule      : port_scan
+  MITRE     : T1046 — Network Service Scanning
+  ports_scanned: 21,22,23,25,53,80,110,143,443,3306,5432,8080
+  duration  : 4s
+
+────────────────────────────────────────────────────────────
+[HIGH] Brute force attack detected from 172.16.0.200
+  Timestamp : 2026-05-01 15:10:01
+  IP        : 172.16.0.200
+  User      : frank
+  Rule      : brute_force
+  MITRE     : T1110.001 — Brute Force: Password Guessing
+  failed_count: 3
+  threshold : 3
+
+────────────────────────────────────────────────────────────
+[HIGH] Brute force attack detected from 91.108.56.199
+  Timestamp : 2026-05-01 16:00:00
+  IP        : 91.108.56.199
+  User      : admin
+  Rule      : brute_force
+  MITRE     : T1110.001 — Brute Force: Password Guessing
+  failed_count: 10
+  threshold : 3
+
+────────────────────────────────────────────────────────────
+[HIGH] Rapid login attempts (DoS-like) from 91.108.56.199: 10 in 10s
+  Timestamp : 2026-05-01 16:00:00
+  IP        : 91.108.56.199
+  User      : admin
+  Rule      : rapid_requests
+  MITRE     : T1499 — Endpoint Denial of Service
+  events_in_window: 10
+  window_seconds: 10
+
+────────────────────────────────────────────────────────────
+[HIGH] Credential stuffing suspected from 198.51.100.77 (6 usernames tried)
+  Timestamp : various
+  IP        : 198.51.100.77
+  User      : admin, administrator, guest, test, user, webmaster
+  Rule      : credential_stuffing
+  MITRE     : T1110.004 — Brute Force: Credential Stuffing
+  unique_users: 6
+  usernames : admin, administrator, guest, test, user, webmaster
+  threshold : 4
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Off-hours login at 2026-05-01 03:22:47 by bob
+  Timestamp : 2026-05-01 03:22:47
+  IP        : 10.0.0.8
+  User      : bob
+  Rule      : off_hours_login
+  MITRE     : T1078 — Valid Accounts
+  hour      : 3
+  off_hours : 0:00–6:00
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /etc/shadow by bob
+  Timestamp : 2026-05-01 03:23:15
+  IP        : 10.0.0.8
+  User      : bob
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /etc/shadow
+  matched_rule: /etc/shadow
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /var/log/auth.log by bob
+  Timestamp : 2026-05-01 03:24:01
+  IP        : 10.0.0.8
+  User      : bob
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /var/log/auth.log
+  matched_rule: /var/log/auth.log
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /etc/passwd by admin
+  Timestamp : 2026-05-01 09:15:30
+  IP        : 192.168.1.1
+  User      : admin
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /etc/passwd
+  matched_rule: /etc/passwd
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /etc/shadow by alice
+  Timestamp : 2026-05-01 11:05:33
+  IP        : 10.0.0.5
+  User      : alice
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /etc/shadow
+  matched_rule: /etc/shadow
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /etc/sudoers by alice
+  Timestamp : 2026-05-01 11:06:10
+  IP        : 10.0.0.5
+  User      : alice
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /etc/sudoers
+  matched_rule: /etc/sudoers
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /root/.ssh/id_rsa by alice
+  Timestamp : 2026-05-01 11:06:45
+  IP        : 10.0.0.5
+  User      : alice
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /root/.ssh/id_rsa
+  matched_rule: /root/
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /var/www/html/config.php by carol
+  Timestamp : 2026-05-01 14:00:10
+  IP        : 10.0.0.15
+  User      : carol
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /var/www/html/config.php
+  matched_rule: config.php
+  action    : READ
+
+────────────────────────────────────────────────────────────
+[MEDIUM] Sensitive file accessed: /etc/passwd by frank
+  Timestamp : 2026-05-01 15:11:00
+  IP        : 172.16.0.200
+  User      : frank
+  Rule      : sensitive_file_access
+  MITRE     : T1083 — File and Directory Discovery
+  file      : /etc/passwd
+  matched_rule: /etc/passwd
+  action    : READ
+

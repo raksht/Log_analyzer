@@ -1,0 +1,73 @@
+# Security Log File - Server: PROD-WEB-01
+# Format: YYYY-MM-DD HH:MM:SS EVENT_TYPE DETAILS
+
+# --- Normal morning activity ---
+2026-05-01 08:05:12 LOGIN SUCCESS user=alice ip=10.0.0.5 port=22 protocol=SSH
+2026-05-01 08:12:44 LOGIN SUCCESS user=bob ip=10.0.0.8 port=22 protocol=SSH
+2026-05-01 08:30:01 FILE_ACCESS user=alice ip=10.0.0.5 file=/var/www/html/index.php action=READ
+2026-05-01 08:55:22 LOGIN SUCCESS user=carol ip=10.0.0.15 port=443 protocol=HTTPS
+2026-05-01 09:10:05 LOGIN SUCCESS user=admin ip=192.168.1.1 port=22 protocol=SSH
+2026-05-01 09:15:30 FILE_ACCESS user=admin ip=192.168.1.1 file=/etc/passwd action=READ
+2026-05-01 09:20:11 LOGIN SUCCESS user=dave ip=10.0.0.22 port=22 protocol=SSH
+
+# --- Brute force attack from external IP ---
+2026-05-01 10:01:05 LOGIN FAILED user=admin ip=203.0.113.45 port=22 protocol=SSH
+2026-05-01 10:01:10 LOGIN FAILED user=admin ip=203.0.113.45 port=22 protocol=SSH
+2026-05-01 10:01:15 LOGIN FAILED user=admin ip=203.0.113.45 port=22 protocol=SSH
+2026-05-01 10:01:20 LOGIN FAILED user=admin ip=203.0.113.45 port=22 protocol=SSH
+2026-05-01 10:01:25 LOGIN FAILED user=admin ip=203.0.113.45 port=22 protocol=SSH
+2026-05-01 10:01:30 LOGIN FAILED user=root ip=203.0.113.45 port=22 protocol=SSH
+2026-05-01 10:01:35 LOGIN FAILED user=root ip=203.0.113.45 port=22 protocol=SSH
+
+# --- Credential stuffing: same IP, many usernames ---
+2026-05-01 10:15:00 LOGIN FAILED user=admin ip=198.51.100.77 port=443 protocol=HTTPS
+2026-05-01 10:15:02 LOGIN FAILED user=administrator ip=198.51.100.77 port=443 protocol=HTTPS
+2026-05-01 10:15:04 LOGIN FAILED user=test ip=198.51.100.77 port=443 protocol=HTTPS
+2026-05-01 10:15:06 LOGIN FAILED user=guest ip=198.51.100.77 port=443 protocol=HTTPS
+2026-05-01 10:15:08 LOGIN FAILED user=user ip=198.51.100.77 port=443 protocol=HTTPS
+2026-05-01 10:15:10 LOGIN FAILED user=webmaster ip=198.51.100.77 port=443 protocol=HTTPS
+
+# --- Off-hours login (3 AM) ---
+2026-05-01 03:22:47 LOGIN SUCCESS user=bob ip=10.0.0.8 port=22 protocol=SSH
+2026-05-01 03:23:15 FILE_ACCESS user=bob ip=10.0.0.8 file=/etc/shadow action=READ
+2026-05-01 03:24:01 FILE_ACCESS user=bob ip=10.0.0.8 file=/var/log/auth.log action=READ
+
+# --- Suspicious file access (sensitive files) ---
+2026-05-01 11:05:33 FILE_ACCESS user=alice ip=10.0.0.5 file=/etc/shadow action=READ
+2026-05-01 11:06:10 FILE_ACCESS user=alice ip=10.0.0.5 file=/etc/sudoers action=READ
+2026-05-01 11:06:45 FILE_ACCESS user=alice ip=10.0.0.5 file=/root/.ssh/id_rsa action=READ
+
+# --- Port scan behavior ---
+2026-05-01 11:30:00 PORT_SCAN ip=185.220.101.33 ports_scanned=21,22,23,25,53,80,110,143,443,3306,5432,8080 duration=4s
+2026-05-01 11:30:05 LOGIN FAILED user=admin ip=185.220.101.33 port=21 protocol=FTP
+2026-05-01 11:30:06 LOGIN FAILED user=admin ip=185.220.101.33 port=23 protocol=TELNET
+
+# --- Normal afternoon activity ---
+2026-05-01 13:00:22 LOGIN SUCCESS user=alice ip=10.0.0.5 port=22 protocol=SSH
+2026-05-01 13:30:55 LOGIN SUCCESS user=dave ip=10.0.0.22 port=22 protocol=SSH
+2026-05-01 14:00:10 FILE_ACCESS user=carol ip=10.0.0.15 file=/var/www/html/config.php action=READ
+2026-05-01 14:45:30 LOGIN SUCCESS user=eve ip=10.0.0.30 port=443 protocol=HTTPS
+
+# --- Multiple failed then success (possible successful breach) ---
+2026-05-01 15:10:01 LOGIN FAILED user=frank ip=172.16.0.200 port=22 protocol=SSH
+2026-05-01 15:10:15 LOGIN FAILED user=frank ip=172.16.0.200 port=22 protocol=SSH
+2026-05-01 15:10:30 LOGIN FAILED user=frank ip=172.16.0.200 port=22 protocol=SSH
+2026-05-01 15:10:45 LOGIN SUCCESS user=frank ip=172.16.0.200 port=22 protocol=SSH
+2026-05-01 15:11:00 FILE_ACCESS user=frank ip=172.16.0.200 file=/etc/passwd action=READ
+
+# --- Rapid repeated access (DoS-like behavior) ---
+2026-05-01 16:00:00 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:01 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:01 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:02 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:02 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:02 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:03 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:03 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:03 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+2026-05-01 16:00:04 LOGIN FAILED user=admin ip=91.108.56.199 port=443 protocol=HTTPS
+
+# --- Late evening normal activity ---
+2026-05-01 18:00:05 LOGIN SUCCESS user=admin ip=192.168.1.1 port=22 protocol=SSH
+2026-05-01 18:15:33 LOGIN SUCCESS user=alice ip=10.0.0.5 port=22 protocol=SSH
+2026-05-01 19:45:00 LOGIN SUCCESS user=bob ip=10.0.0.8 port=443 protocol=HTTPS
